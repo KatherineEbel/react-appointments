@@ -1,0 +1,16 @@
+{
+  "name": "appointments",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": "example.com",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
