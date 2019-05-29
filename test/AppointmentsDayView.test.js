@@ -58,6 +58,16 @@ describe('Appointment', function () {
     render(<Appointment customer={ customer }/>)
     expect(container.textContent).toMatch(notes)
   })
+  
+  it('renders a heading', function () {
+    const today = new Date()
+    const appointment = {
+      startsAt: today.setHours(10, 0),
+      customer: { firstName: 'Ashley' }
+    }
+    render(<Appointment {...appointment }/>)
+    expect(container.textContent).toMatch('10:00')
+  })
 })
 
 describe('AppointmentsDayView', function () {
