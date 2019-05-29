@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ReactTestUtils from 'react-dom/test-utils'
-import { Appointment, AppointmentsDayView } from '../src/Appointment'
+import { Appointment, AppointmentsDayView } from '../src/AppointmentsDayView'
 
 describe('Appointment', function () {
   let container, customer
@@ -22,6 +22,51 @@ describe('Appointment', function () {
     customer = { firstName: 'Jordan' }
     render(<Appointment customer={ customer }/>)
     expect(container.textContent).toMatch('Jordan')
+  })
+  
+  it('renders the customers last name', function () {
+    const lastName = 'Smith'
+    customer = { firstName: 'Jordan', lastName }
+    render(<Appointment customer={ customer } />)
+    expect(container.textContent).toMatch(lastName)
+  })
+  
+  it('renders the customers phone number', function () {
+    const phoneNumber = '555-555-5555'
+    customer = { phoneNumber }
+    render(<Appointment customer={ customer }/>)
+    expect(container.textContent).toMatch(phoneNumber)
+  })
+  
+  it('renders the stylists name', function () {
+    const stylist = 'Becca'
+    customer = { stylist }
+    render(<Appointment customer={ customer }/>)
+    expect(container.textContent).toMatch(stylist)
+  })
+  
+  it('renders the salon service', function () {
+    const service = 'Foils'
+    customer = { service }
+    render(<Appointment customer={ customer}/>)
+    expect(container.textContent).toMatch(service)
+  })
+  
+  it('renders the appointment notes', function () {
+    const notes = 'Don\'t blow dry'
+    customer = { notes }
+    render(<Appointment customer={ customer }/>)
+    expect(container.textContent).toMatch(notes)
+  })
+  
+  it('renders a heading', function () {
+    const today = new Date()
+    const appointment = {
+      startsAt: today.setHours(10, 0),
+      customer: { firstName: 'Ashley' }
+    }
+    render(<Appointment {...appointment }/>)
+    expect(container.textContent).toMatch('10:00')
   })
 })
 
